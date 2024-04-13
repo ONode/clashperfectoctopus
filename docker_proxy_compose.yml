@@ -2,7 +2,7 @@ version: '3.7'
 services:
   proxy_service:
     image: dreamacro/clash
-    container_name: clash_network
+    container_name: clashmoe
     ports:
       - "17890:17890"
       - "17891:17891"
