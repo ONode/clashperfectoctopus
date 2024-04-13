@@ -1,0 +1,10 @@
+{
+  "clash_proxy": {
+    "port": "7890",
+    "secret": "-----",
+    "conn_file": "/home/clashperfectoctopus/config/proxy_config.json",
+    "conn_file___": "cache/proxy_config.json",
+    "selector": "xxxxxxx",
+    "test_endpoint": "xxxxxxx"
+  }
+}

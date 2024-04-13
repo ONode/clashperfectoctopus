@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  proxy_service:
+    image: dreamacro/clash
+    container_name: clash_network
+    ports:
+      - "17890:17890"
+      - "17891:17891"
+    volumes:
+      - ./clash_conf/rPk1caYh8R3fLXoC.yaml:/root/.config/clash/config.yaml:ro
+      - ./clash_conf:/root/.config/clash
+    restart: always
+    # When your system is Linux, you can use `network_mode: "host"` directly.
+    # network_mode: host
+    # clash_docker_default
+    privileged: true
+    expose:
+      - 7890
+      - 7891
+      - 17890
+      - 9090
+  proxy_control_service:
+    image: adriansteward/galxewrok:1.2.1291
+    container_name: clash_checker
+    restart: "on-failure"
+    command: python clash_runtime.py
+    depends_on:
+      - proxy_service
+    volumes:
+      - ./config:/home/galxe/cache
