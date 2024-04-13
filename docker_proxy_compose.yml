@@ -19,12 +19,21 @@ services:
       - 7891
       - 17890
       - 9090
+    networks:
+      - clsh_octopus_network
+
   proxy_control_service:
     image: adriansteward/galxewrok:1.2.1291
     container_name: clash_checker
     restart: "on-failure"
     command: python clash_runtime.py
+    networks:
+      - clsh_octopus_network
     depends_on:
       - proxy_service
     volumes:
-      - ./config:/home/galxe/cache
+      - ./config:./cache
+
+
+networks:
+  clsh_octopus_network:
